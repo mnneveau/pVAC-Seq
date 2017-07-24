@@ -23,8 +23,8 @@ from lib.prediction_class import *
 
 import turtle
 
-#gives graphics layer when running on a headless system
-os.environ["DISPLAY"] = ':0.0'
+##gives graphics layer when running on a headless system
+##os.environ["DISPLAY"] = ':0.0'
 
 def define_parser():
 
@@ -174,7 +174,7 @@ def get_conversion_factor(pep_seqs):
 def draw_header(t, header_pos):
     t.pu()
     t.setpos(header_pos)
-    t.write("Vaccine Design", align="center", font=("Arial", 18, "bold"))
+    t.write("Vaccine Design", align="center", font=("Arial", 20, "bold"))
     t.pd()
     return()
 
@@ -194,7 +194,7 @@ def get_color(count):
 
 def write_junct_score(t, junct_score, size):
     t.back(size)
-    t.write(junct_score + 'nM', align="center")
+    t.write(junct_score + 'nM', align="center", font=("Tahoma", 9))
     t.forward(size)
 
 #draw perpindicular line to arc to mark junction
@@ -213,7 +213,7 @@ def draw_junction_w_label(junct_score, t, pen_thin, angle):
     elif (angle >= 115 and angle < 165):
         write_junct_score(t, junct_score, 20)
     elif (angle >= 165 and angle < 195):
-        write_junct_score(t, junct_score, 25)
+        write_junct_score(t, junct_score, 35)
     elif (angle >= 195 and angle < 245):
         write_junct_score(t, junct_score, 35)
     elif (angle >= 245 and angle < 295):
@@ -246,11 +246,11 @@ def draw_arc_peptide(peptide, length, count, angle, t, circle_radius, conversion
     t.left(90)
     t.forward(pep_id_space)
     if (angle > 80 and angle < 100) or (angle > 260 and angle < 280):
-        t.write(peptide, align="center", font=("Arial", 10, "bold"))
+        t.write(peptide, align="center", font=("Arial", 11, "bold"))
     elif (angle > 0 and angle < 90) or (angle > 270 and angle < 360):
-        t.write(peptide, align="right", font=("Arial", 10, "bold"))
+        t.write(peptide, align="right", font=("Arial", 11, "bold"))
     else:
-        t.write(peptide, align="left", font=("Arial", 10, "bold"))
+        t.write(peptide, align="left", font=("Arial", 11, "bold"))
     t.back(pep_id_space)
     t.setheading(reset)
     t.pd()
@@ -276,7 +276,7 @@ def output_screen(t, out_f):
     out_file = "/".join((out_f, "vaccine.jpg"))
     ts = t.getscreen()
     ts.getcanvas().postscript(file=ps_file)
-    os.system('convert -density 300 -quality 100 ' + ps_file + " " + out_file)
+    os.system('convert -density 300 -quality 200 ' + ps_file + " " + out_file)
     os.system('rm ' + ps_file)
     return()
 
