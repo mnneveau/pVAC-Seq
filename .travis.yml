@@ -1,8 +1,14 @@
 language: python
 python:
   - "3.5"
+addons:
+  apt:
+    packages:
+      - xvfb
 install:
   - pip install -e .
+  - export DISPLAY=':99.0'
+  - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1  &
 script:
   - TEST_FLAG=1 python3 -m unittest discover -v
   - prove --recurse --verbose
