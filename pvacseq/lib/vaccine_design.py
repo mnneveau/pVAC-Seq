@@ -275,7 +275,7 @@ def output_screen(t, out_f):
     ps_file = "/".join((out_f, "vaccine.ps"))
     out_file = "/".join((out_f, "vaccine.jpg"))
     print("ps_output: " + ps_file)
-    print("output: " + jpg_file)
+    print("output: " + out_file)
     ts = t.getscreen()
     ts.getcanvas().postscript(file=ps_file)
     os.system('convert -density 300 -quality 200 ' + ps_file + " " + out_file)
