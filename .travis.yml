@@ -5,6 +5,9 @@ addons:
   apt:
     packages:
       - xvfb
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y ghostscript
 install:
   - pip install -e .
 #before_script:
