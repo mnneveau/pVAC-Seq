@@ -274,6 +274,8 @@ def draw_arc_junct(peptide, length, t, conversion_factor, junct_seq_space, circl
 def output_screen(t, out_f):
     ps_file = "/".join((out_f, "vaccine.ps"))
     out_file = "/".join((out_f, "vaccine.jpg"))
+    print("ps_output: " + ps_file)
+    print("output: " + jpg_file)
     ts = t.getscreen()
     ts.getcanvas().postscript(file=ps_file)
     os.system('convert -density 300 -quality 200 ' + ps_file + " " + out_file)
@@ -372,7 +374,9 @@ def output_vaccine_png(input_file, out_f):
     #add white space in circle after genes    
     draw_junction(t, pen_thin)
     draw_wht_space(t, circle_radius, wht_space_angle)
+    print("Done Drawing")
     output_screen(t, out_f)
+
     
     #keeps turtle screen open until closed by user
     #turtle.mainloop()
